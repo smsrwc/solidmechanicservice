@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProAuto Repair - Professional Mechanic Services</title>
-    <meta name="description" content="Expert auto repair services at affordable prices. Oil changes, brake service, engine repair, and more. Quality service you can trust.">
+    <title>Solid Mechanic Service | Professional Auto Repairs</title>
+    <meta name="description" content="Expert auto repair services at Solid Mechanic Service. Oil changes, brake service, engine repair, and more. Quality service you can trust.">
     <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -27,12 +36,13 @@
         
         /* Header */
         header {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .header-container {
@@ -41,13 +51,32 @@
             align-items: center;
         }
         
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
         .logo {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        
+        .logo-text {
             font-size: 1.8rem;
             font-weight: bold;
         }
         
-        .logo span {
-            color: #f39c12;
+        .logo-text span {
+            color: var(--accent);
         }
         
         nav ul {
@@ -64,10 +93,13 @@
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
         }
         
         nav ul li a:hover {
-            color: #f39c12;
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
         }
         
         /* Hero Section */
@@ -95,13 +127,16 @@
         
         .btn {
             display: inline-block;
-            background-color: #f39c12;
+            background-color: var(--accent);
             color: white;
             padding: 12px 30px;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
         
         .btn:hover {
@@ -121,12 +156,12 @@
         
         .section-title h2 {
             font-size: 2rem;
-            color: #1a5276;
+            color: var(--primary);
             margin-bottom: 1rem;
         }
         
         .section-title p {
-            color: #777;
+            color: var(--gray);
             max-width: 700px;
             margin: 0 auto;
         }
@@ -152,7 +187,7 @@
         
         .service-icon {
             font-size: 2.5rem;
-            color: #1a5276;
+            color: var(--primary);
             margin-bottom: 1rem;
         }
         
@@ -177,7 +212,7 @@
         .about-text h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: #1a5276;
+            color: var(--primary);
         }
         
         .about-text p {
@@ -185,10 +220,40 @@
             color: #555;
         }
         
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
         /* Contact */
         .contact {
             padding: 5rem 0;
-            background-color: white;
+            background-color: #f8f8f8;
         }
         
         .contact-container {
@@ -200,7 +265,7 @@
         .contact-info h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: #1a5276;
+            color: var(--primary);
         }
         
         .contact-details {
@@ -240,7 +305,7 @@
         }
         
         form button {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             border: none;
             padding: 12px;
@@ -257,7 +322,7 @@
         
         /* Footer */
         footer {
-            background-color: #1a5276;
+            background-color: var(--primary);
             color: white;
             padding: 3rem 0 1rem;
         }
@@ -282,7 +347,7 @@
         }
         
         .footer-section a:hover {
-            color: #f39c12;
+            color: var(--accent);
         }
         
         .social-links {
@@ -300,6 +365,57 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #ddd;
             font-size: 0.9rem;
+        }
+        
+        /* Admin Panel */
+        .admin-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .admin-toggle {
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+        }
+        
+        .admin-form {
+            display: none;
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        
+        .admin-form h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .admin-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .admin-form.active {
+            display: block;
         }
         
         /* Responsive */
@@ -324,6 +440,10 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .admin-form {
+                width: 250px;
+            }
         }
     </style>
 </head>
@@ -331,12 +451,16 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">Pro<span>Auto</span> Repair</div>
+            <div class="logo-container">
+                <div class="logo" id="logo-placeholder">SMS</div>
+                <div class="logo-text">Solid <span>Mechanic</span> Service</div>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -389,16 +513,39 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>About Our Auto Repair Shop</h2>
-                    <p>With over 15 years of experience, ProAuto Repair has been serving the community with honest and reliable auto repair services. Our certified technicians are committed to providing quality workmanship and exceptional customer service.</p>
+                    <h2>About Solid Mechanic Service</h2>
+                    <p>With over 15 years of experience, Solid Mechanic Service has been serving the community with honest and reliable auto repair services. Our certified technicians are committed to providing quality workmanship and exceptional customer service.</p>
                     <p>We use only high-quality parts and the latest diagnostic equipment to ensure your vehicle is repaired correctly the first time. Your satisfaction is our top priority.</p>
                     <p>Stop by our shop today and experience the difference of working with a mechanic who truly cares about you and your vehicle.</p>
                 </div>
                 <div class="about-image">
-                    <!-- Placeholder for an image -->
                     <div style="background-color: #ddd; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 5px;">
                         [Mechanic Shop Image]
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Don't just take our word for it - hear from our satisfied customers.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Solid Mechanic Service saved me hundreds of dollars compared to the dealership. Honest and reliable service!"</p>
+                    <p class="testimonial-author">- John D.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've been taking my cars here for years. They always do a great job and stand behind their work."</p>
+                    <p class="testimonial-author">- Sarah M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Quick service and fair pricing. They explained everything clearly and didn't try to upsell unnecessary repairs."</p>
+                    <p class="testimonial-author">- Mike T.</p>
                 </div>
             </div>
         </div>
@@ -415,9 +562,9 @@
                 <div class="contact-info">
                     <h2>Get In Touch</h2>
                     <div class="contact-details">
-                        <p>📍 123 Auto Repair Lane, City, State 12345</p>
-                        <p>📞 (555) 123-4567</p>
-                        <p>✉️ contact@proautorepair.com</p>
+                        <p>📍 <span id="business-address">123 Auto Repair Lane, City, State 12345</span></p>
+                        <p>📞 <span id="business-phone">(555) 123-4567</span></p>
+                        <p>✉️ <span id="business-email">contact@solidmechanic.com</span></p>
                     </div>
                     <div class="hours">
                         <h3>Business Hours</h3>
@@ -444,7 +591,7 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-section">
-                    <h3>ProAuto Repair</h3>
+                    <h3>Solid Mechanic Service</h3>
                     <p>Quality auto repair services you can trust. Serving the community for over 15 years.</p>
                 </div>
                 <div class="footer-section">
@@ -456,9 +603,9 @@
                 </div>
                 <div class="footer-section">
                     <h3>Contact Info</h3>
-                    <p>123 Auto Repair Lane</p>
-                    <p>City, State 12345</p>
-                    <p>(555) 123-4567</p>
+                    <p id="footer-address">123 Auto Repair Lane, City, State 12345</p>
+                    <p id="footer-phone">(555) 123-4567</p>
+                    <p id="footer-email">contact@solidmechanic.com</p>
                 </div>
                 <div class="footer-section">
                     <h3>Follow Us</h3>
@@ -470,9 +617,96 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 ProAuto Repair. All rights reserved.</p>
+                <p>&copy; 2023 Solid Mechanic Service. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel">
+        <div class="admin-toggle" id="admin-toggle">⚙️</div>
+        <div class="admin-form" id="admin-form">
+            <h3>Edit Business Details</h3>
+            <input type="text" id="input-address" placeholder="Business Address">
+            <input type="text" id="input-phone" placeholder="Phone Number">
+            <input type="email" id="input-email" placeholder="Email Address">
+            <input type="text" id="input-logo" placeholder="Logo Text (2-3 characters)">
+            <button class="btn" id="save-details">Save Details</button>
+        </div>
+    </div>
+
+    <script>
+        // Admin panel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminToggle = document.getElementById('admin-toggle');
+            const adminForm = document.getElementById('admin-form');
+            const saveButton = document.getElementById('save-details');
+            
+            // Load saved details if they exist
+            if (localStorage.getItem('businessAddress')) {
+                document.getElementById('business-address').textContent = localStorage.getItem('businessAddress');
+                document.getElementById('footer-address').textContent = localStorage.getItem('businessAddress');
+            }
+            
+            if (localStorage.getItem('businessPhone')) {
+                document.getElementById('business-phone').textContent = localStorage.getItem('businessPhone');
+                document.getElementById('footer-phone').textContent = localStorage.getItem('businessPhone');
+            }
+            
+            if (localStorage.getItem('businessEmail')) {
+                document.getElementById('business-email').textContent = localStorage.getItem('businessEmail');
+                document.getElementById('footer-email').textContent = localStorage.getItem('businessEmail');
+            }
+            
+            if (localStorage.getItem('businessLogo')) {
+                document.getElementById('logo-placeholder').textContent = localStorage.getItem('businessLogo');
+            }
+            
+            // Toggle admin form
+            adminToggle.addEventListener('click', function() {
+                adminForm.classList.toggle('active');
+                
+                // Pre-fill form with current values
+                document.getElementById('input-address').value = localStorage.getItem('businessAddress') || '';
+                document.getElementById('input-phone').value = localStorage.getItem('businessPhone') || '';
+                document.getElementById('input-email').value = localStorage.getItem('businessEmail') || '';
+                document.getElementById('input-logo').value = localStorage.getItem('businessLogo') || '';
+            });
+            
+            // Save details
+            saveButton.addEventListener('click', function() {
+                const address = document.getElementById('input-address').value;
+                const phone = document.getElementById('input-phone').value;
+                const email = document.getElementById('input-email').value;
+                const logo = document.getElementById('input-logo').value;
+                
+                if (address) {
+                    localStorage.setItem('businessAddress', address);
+                    document.getElementById('business-address').textContent = address;
+                    document.getElementById('footer-address').textContent = address;
+                }
+                
+                if (phone) {
+                    localStorage.setItem('businessPhone', phone);
+                    document.getElementById('business-phone').textContent = phone;
+                    document.getElementById('footer-phone').textContent = phone;
+                }
+                
+                if (email) {
+                    localStorage.setItem('businessEmail', email);
+                    document.getElementById('business-email').textContent = email;
+                    document.getElementById('footer-email').textContent = email;
+                }
+                
+                if (logo) {
+                    localStorage.setItem('businessLogo', logo);
+                    document.getElementById('logo-placeholder').textContent = logo;
+                }
+                
+                adminForm.classList.remove('active');
+                alert('Business details updated successfully!');
+            });
+        });
+    </script>
 </body>
 </html>
